@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
+// src/App.js
+
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import Dashboard from './components/Dashboard';
+import EmployeeList from './components/EmployeeList';
+import Sidebar from './components/Sidebar';
+import { CssBaseline, Box } from '@mui/material';
+import NavBar from './components/Navbar';
+import AddEmployee from './components/AddEmployee';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CssBaseline />
+      <NavBar />
+      <Box sx={{ display: 'flex', mt: 8 }}>
+        <Sidebar />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/employees" element={<EmployeeList />} />
+            <Route path="/add-employee" element={<AddEmployee />} />
+            {/* Other routes can be added here */}
+          </Routes>
+        </Box>
+      </Box>
+    </Router>
   );
-}
+};
 
 export default App;
+
+
+
